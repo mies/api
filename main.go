@@ -1,15 +1,14 @@
 package main
 
 import (
-	"encoding/json"
 	"log"
 	"net/http"
 )
 
 func CityHandler(res http.ResponseWriter, req *http.Request) {
-	data, _ := json.Marshal("{'cities':'San Francisco, Amsterdam, Berlin'}")
+	data := `{"cities":"San Francisco, Amsterdam, Berlin, Rotterdam"}`
 	res.Header().Set("Content-Type", "application/json; charset=utf-8")
-	res.Write(data)
+	res.Write([]byte(data))
 }
 
 func main() {
