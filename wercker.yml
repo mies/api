@@ -27,7 +27,7 @@ build:
           go test ./...
           
     - script:
-        name: copy binary
+        name: Copy Binary
         code: cp app "$WERCKER_OUTPUT_DIR"
 
 deploy:
