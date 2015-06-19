@@ -35,12 +35,11 @@ build:
         code: |
             result=$WERCKER_RESULT
             message="Build has $result."
-
-          curl -d "deploy_message=$message"\
-          -d "deploy_user=$WERCKER_STARTED_BY"\
-          -d "commit_id=$WERCKER_GIT_COMMIT"\
-           "http://requestb.in/ywhmiqyw"
-           echo $message
+            curl -d "deploy_message=$message"\
+            -d "deploy_user=$WERCKER_STARTED_BY"\
+            -d "commit_id=$WERCKER_GIT_COMMIT"\
+            "http://requestb.in/ywhmiqyw"
+            echo $message
 
 
 deploy:
