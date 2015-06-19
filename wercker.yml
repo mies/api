@@ -30,6 +30,19 @@ build:
         name: Copy binary
         code: cp app "$WERCKER_OUTPUT_DIR"
 
+    - script:
+        name: curl it!
+        code: |
+            result=$WERCKER_RESULT
+            message="Build has $result."
+
+          curl -d "deploy_message=$message"\
+          -d "deploy_user=$WERCKER_STARTED_BY"\
+          -d "commit_id=$WERCKER_GIT_COMMIT"\
+           "http://requestb.in/ywhmiqyw"
+           echo $message
+
+
 deploy:
   steps:
     - internal/docker-scratch-push:
